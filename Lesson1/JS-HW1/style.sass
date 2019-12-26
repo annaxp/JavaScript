@@ -15,6 +15,9 @@ html, body
   //min-height: 100%
   display: flex
   flex-direction: column
+  max-width: $widthAll
+  min-width: $widthAll / 2
+  margin: 0 auto
 
 a
   text-decoration: none
@@ -24,28 +27,35 @@ input
 
 .header
   display: flex
-  background-color: $colorCompel
   justify-content: flex-end
+  align-items: center
+  background-color: $colorCompel
+  min-height: 80px
 
 
 .btn-cart
   height: 39px
   width: 123px
   color: $colorGrey
-
-
+  margin-right: 50px
+  box-shadow: 2px 2px 5px #666666
+  border-bottom: 1px solid #cccccc
+  border-radius: 5px
+  font-size: 13px
+  font-weight: 700
 
 
 .products
   background-color: $colorBack
   display: flex
-  justify-content: space-between
-  flex-wrap: wrap
+  //justify-content: space-around
+  flex-flow: row wrap
 
 .product-item
   color: $colorText
   min-width: 153px
   height: 150px
+  text-align: center
 
 .by-btn
   height: 39px

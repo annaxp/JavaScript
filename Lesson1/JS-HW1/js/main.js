@@ -6,13 +6,17 @@ const products = [
   {id: 3, title: 'Keyboard', price: 5000},
   {id: 4, title: 'Gamepad', price: 4500},
   {id: 5, title: '333', price: 100},
+  {id: 6, title: '444', price: 4500},
+  {id: 7, title: '555', price: 100},
+  {id: 8, title: '666', price: 100},
 
 ];
 
-const renderProduct = (title, price) => {
+const renderProduct = (item, img = 'https://placehold.it/200x150') => {
   return `<div class="product-item">
-            <h3>${title}</h3>
-            <p>${price}</p>
+        <img src="${img}" alt="Some img">
+            <h3>${item.title}</h3>
+            <p>${item.price}</p>
             <button class="by-btn">Добавить в корзину</button>
           </div>`;
 };
