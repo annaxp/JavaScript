@@ -1,25 +1,72 @@
+@import "vars"
+//@import "mixins"
+
+*
+  margin: 0
+  padding: 0
+
+body
+  font-family: 'Lato', sans-serif
+
+html, body
+  height: 100%
+
+.wrapper
+  //min-height: 100%
+  display: flex
+  flex-direction: column
+
+a
+  text-decoration: none
+
+input
+  outline: none
+
+.header
+  display: flex
+  background-color: $colorCompel
+  justify-content: flex-end
+
+
+.btn-cart
+  height: 39px
+  width: 123px
+  color: $colorGrey
+
+
+
+
 .products
-  background-color: aqua
+  background-color: $colorBack
   display: flex
   justify-content: space-between
   flex-wrap: wrap
 
 .product-item
-  color: blue
+  color: $colorText
+  min-width: 153px
+  height: 150px
 
 .by-btn
-  height: 30px
-  width: 100px
-  border-radius: 15px
+  height: 39px
+  width: 123px
+  border-radius: 5px
   box-shadow: 2px 2px 5px #666666
   border-bottom: 1px solid #cccccc
+  color: $colorText
+  font-size: 13px
 
-
-
-
-  color: blueviolet
-
-
+.test
+  font-size: 13px
+  font-weight: 700
+  border: 1px solid #ffffff
+  display: none
+  width: 123px
+  height: 39px
+  position: absolute
+  top: 98px
+  left: 70px
+  line-height: 39px
 
 
 
