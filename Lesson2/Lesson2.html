@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 2</title>
+</head>
+<body>
+<script>
+    'use strict';
+    // ES5 Способ реализации ООП
+
+    // var user = {
+    //     name: 'Ann',
+    // };
+
+
+    // function Person(name, yearOfBirth) {
+    //     this.name = name;
+    //     this.yearOfBirth = yearOfBirth;
+    // }
+    //
+    // Person.prototype.calcAge = function () {
+    //     console.log(new Date().getFullYear() - this.yearOfBirth);
+    // };
+    //
+    // // console.log(new Date().getFullYear()); // текущий год
+    // // moment.js  библиотека настройки времени
+    //
+    // // Наследование хотим получить учителя
+    // function Teacher(name, yearOfBirth, subject) {
+    //     Person.call(this, name, yearOfBirth,);
+    //     this.subject = subject;
+    // }
+    //
+    // Teacher.prototype = Object.create(Person.prototype); // создает конструктор от класса персон
+    // Teacher.prototype.constructor = Teacher; // востанавливает конструктор
+    //
+    // var john = new Person('john', 1990);
+    // var ann = new Teacher('Ann', 1995, 'Math');
+    //
+    // console.log(john);
+    // console.log(ann);
+
+
+// Привет ООП в ES6
+
+    class Person {
+        constructor(name, yearOfBirth) {
+            this.name = name;
+            this.yearOfBirth = yearOfBirth;
+        }
+
+        calcAge() {
+            console.log(new Date().getFullYear() - this.yearOfBirth);
+        }
+
+        sayHi() {
+            return `${this.name} says hi`;
+        }
+    }
+
+    class Teacher extends Person {
+        constructor(name, yearOfBirth, subject) {
+            super(name, yearOfBirth);
+            this.subject = subject;
+        }
+
+        sayHi() {
+            return `${this.sayHi()} to student`;
+        }
+
+        static triple(x) {
+            if (x === undefined){
+                x = 2;
+            }
+            return x * 3;
+        }
+    }
+
+
+    const john = new Person('john', 1990);
+    const ann = new Teacher('Ann', 1995, 'Math');
+
+    console.log(Teacher.triple(4));
+    console.log(john);
+    console.log(ann);
+
+    // Создание библиотеки своей
+    class MyMath {
+        static sum(x, y) {
+        return x + y;
+        }
+        static dif(x, y) {
+            return x - y;
+        }
+    }
+
+    console.log(MyMath.sum(5, 8));
+    console.log(MyMath.dif(5, 8));
+
+
+
+
+
+</script>
+</body>
+</html>
