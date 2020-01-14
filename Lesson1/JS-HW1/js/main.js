@@ -1,14 +1,14 @@
 'use strict';
 
 const products = [
-  {id: 1, title: 'Notebook', price: 20000, img: './img/product01.jpg'},
-  {id: 2, title: 'Mouse', price: 1500},
-  {id: 3, title: 'Keyboard', price: 5000},
+  {id: 1, title: 'Notebook', price: 20000, img: './img/401_1.jpg'},
+  {id: 2, title: 'Mouse', price: 1500, img: './img/202_2.jpg'},
+  {id: 3, title: 'Keyboard', price: 5000, img: './img/301_2.jpg'},
   {id: 4, title: 'Gamepad', price: 4500},
-  {id: 5, title: '333', price: 100},
-  {id: 6, title: '444', price: 4500},
-  {id: 7, title: '555', price: 100},
-  {id: 8, title: '666', price: 100},
+  {id: 5, title: 'Notebook2', price: 100},
+  {id: 6, title: 'Notebook3', price: 4500},
+  {id: 7, title: 'Gamepad3', price: 100},
+  {id: 8, title: 'Gamepad4', price: 100},
 
 ];
 
