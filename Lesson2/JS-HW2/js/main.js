@@ -2,15 +2,49 @@
 
 // ЗАДАНИЕ
 //  1. Добавьте пустые классы для корзины товаров и элемента корзины товаров. Продумайте, какие методы понадобятся для работы с этими сущностями.
-//  2. Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
 
-class ProductList {
+// class Cart  {
+//   constructor(cartBlock = '.cart') {
+//     this.cartBlock = cartBlock; // контейнер корзины
+//     this.catalogList = [];
+//     this.goods = [];
+//     this.delProduct; // метод удаления товара из корзины
+//     this.clearCart(); // метод очистки корзины
+//     this.changeCount; // изменение колличества товара
+//     this.countCartGoods; // подсчет стоимости корзины
+//     this.addEventHandlers(); // Метод установки обработчиков событий
+//     this.addToCart; // Добавление товаров
+//     this.getCartGoodsLength(); //Получение количества товаров в корзине
+//     this.renderEmptyCart(); // Рендер пустой корзины
+//     this.render(); //Рендер списка товаров в корзине
+//   }
+// };
+//
+// class CartItem {
+//   constructor(product) {
+//     this.product = product;
+//     this.title = product.title;
+//     this.price = product.price;
+//     this.id = product.id;
+//     this.img = product.img;
+//     this.count = product.count;
+//     this.render(); // Рендер отдельного товара в корзине
+//   }
+// }
+
+
+
+
+//  2. Добавьте для GoodsList = ProductList метод, определяющий суммарную стоимость всех товаров.
+
+class ProductList { // класс всех товаров
   constructor(container = '.products') {
     this.container = container;
-    this.goods = [];
-    this.allProducts = [];
-    this._fetchProducts();
+    this.goods = [];  // товары которые будут приходить с сервера
+    this.allProducts = []; // сгенерированные товары
+    this._fetchProducts(); //вызов метода эмулирования запроса на сервер
     this.render();
+    this.countGoods();// подсчет стоимости товаров
   }
 
   _fetchProducts() {
@@ -26,15 +60,25 @@ class ProductList {
     const block = document.querySelector(this.container);
 
     for (let product of this.goods) {
-      const productObject = new ProductItem(product);
+      const productObject = new ProductItem(product);  // обращение ко 2-му классу /не передали img
       this.allProducts.push(productObject);
       block.insertAdjacentHTML('beforeend', productObject.render());
     }
   }
+
+  countGoods() {
+
+    for (let product of this.goods) {
+      let totalPrice = 0;
+      totalPrice += product.price; //  * product.counter дописать потом в корзине
+      console.log(totalPrice); // !!! не пойму почему товары не суммируются!!!
+    }
+
+  }
 }
 
-class ProductItem {
-  constructor(product, img = 'https://placehold.it/200x150') { // не срабатывает значение по умолчанию после иср=правления в строке 41
+class ProductItem {  // отдельные товарчики
+  constructor(product, img = 'https://placehold.it/200x150') { // не срабатывает значение по умолчанию после исрправления в строке 41
     this.title = product.title;
     this.price = product.price;
     this.id = product.id;
