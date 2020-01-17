@@ -44,7 +44,8 @@ class ProductList { // класс всех товаров
     this.allProducts = []; // сгенерированные товары
     this._fetchProducts(); //вызов метода эмулирования запроса на сервер
     this.render();
-    this.countGoods();// подсчет стоимости товаров
+    this.countGoods();// подсчет стоимости товаров не работает
+    this.calcSum();// подсчет стоимости товаров
   }
 
   _fetchProducts() {
@@ -71,11 +72,18 @@ class ProductList { // класс всех товаров
     for (let product of this.goods) {
       let totalPrice = 0;
       totalPrice += product.price; //  * product.counter дописать потом в корзине
-      console.log(totalPrice); // !!! не пойму почему товары не суммируются!!!
+      console.log(totalPrice); // !!! не пойму почему товары не суммируются!!! сделать через reduse
     }
 
   }
+
+  calcSum(){
+    return this.allProducts.reduce((accum, item) => accum += item.price, 0);
+  }
+
 }
+
+// console.log(new ProductList().calcSum());
 
 class ProductItem {  // отдельные товарчики
   constructor(product, img = 'https://placehold.it/200x150') { // не срабатывает значение по умолчанию после исрправления в строке 41
@@ -98,7 +106,9 @@ class ProductItem {  // отдельные товарчики
 }
 
 const list = new ProductList();
-console.log(list);
+console.log(list.calcSum()); // Подсчет суммы
+console.log(list.countGoods()); // метод не срабатывает
+
 
 
 // НИЖЕ урок 1
