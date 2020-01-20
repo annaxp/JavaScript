@@ -22,8 +22,6 @@
     let regExp = new RegExp(/'/g,);
     console.log(str.replace(regExp, '\"')); // меняем одинарные на двойные
 
-
-
     /**
      * 2. Улучшить шаблон так, чтобы в конструкциях типа aren't одинарная кавычка не заменялась на двойную.
      */
@@ -31,6 +29,16 @@
     let str2 = `'You're going to finish this before you leave tonight, aren't you'? MARY: 'Anything you say'.`;
     let regExp2 = new RegExp(/\B'\b|\b'\B/g,);
     console.log(str2.replace(regExp2, '\"')); // меняем одинарные на двойные не трогаем внутри c точками и ? не работает
+
+    // вариант 3 двойной работает но фигня
+
+    let str3 = `'You're going to finish this before you leave tonight, aren't you?' MARY: 'Anything you say'.`;
+    let regExp3 = new RegExp(/'/g,);
+    let srt4 = str3.replace(regExp3, '\"');
+    console.log(srt4);
+    let regExp4 = new RegExp(/\b"\b/g,);
+    console.log(srt4.replace(regExp4, '\''));
+
 
 
 </script>
