@@ -8,13 +8,13 @@ const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-a
 const app = new Vue({
   el: '#app',
   data: {
-    userSearch: '',
-    showCart: false,
+    userSearch: '', //поле поиска
+    showCart: false, // по умолчанию не показана корзина
     cartUrl: '/getBasket.json',
     catalogUrl: '/catalogData.json',
-    products: [],
-    cartItems: [],
-    filtered: [],
+    products: [], // каталог
+    cartItems: [], // корзина
+    filtered: [], // фильтр каталога
     imgCatalog: 'https://placehold.it/200x150',
     imgCart: 'https://placehold.it/50x100',
   },
@@ -26,43 +26,43 @@ const app = new Vue({
             console.log(error);
           });
     },
-    addProduct(product) {
-      this.getJson(`${API}/addToBasket.json`)
+    addProduct(product) { // добавление товара в корзину или колличество если он уже есть
+      this.getJson(`${API}/addToBasket.json`)  // идем на сервер и добавляем в cartItems
           .then(data => {
-            if (data.result === 1) {
-              let find = this.cartItems.find(el => el.id_product === product.id_product);
+            if (data.result === 1) { // ответ сервера
+              let find = this.cartItems.find(el => el.id_product === product.id_product); // если есть
               if (find) {
-                find.quantity++;
+                find.quantity++; // то меняем колличество
               } else {
                 let prod = Object.assign({quantity: 1}, product);
-                this.cartItems.push(prod)
+                this.cartItems.push(prod) // добавляем в cartItems
               }
             } else {
               alert('Error');
             }
           })
     },
-    remove(item) {
+    remove(item) { // удаляем из корзины
       this.getJson(`${API}/deleteFromBasket.json`)
           .then(data => {
-            if (data.result === 1) {
+            if (data.result === 1) {  // проверяем наличие
               if (item.quantity > 1) {
-                item.quantity--;
+                item.quantity--;  // убавляем колличество если > 1
               } else {
-                this.cartItems.splice(this.cartItems.indexOf(item), 1)
+                this.cartItems.splice(this.cartItems.indexOf(item), 1)  // если последний элемент то удаляем
               }
             }
           })
     },
 
-    filter() {
-      let regexp = new RegExp(this.userSearch, 'i');
-      this.filtered = this.products.filter(el => regexp.test(el.product_name));
+    filter() {  //фильтация
+      let regexp = new RegExp(this.userSearch, 'i'); // регистонезависимый поиск
+      this.filtered = this.products.filter(el => regexp.test(el.product_name)); // фильтруем и кладем в filtred в <main>
     },
   },
 
 
-  mounted() {
+  mounted() { // метод запуска как загрузится приложение
     this.getJson(`${API + this.cartUrl}`)
         .then(data => {
           for (let el of data.contents) {

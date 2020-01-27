@@ -11,16 +11,16 @@
     <header>
         <div class="logo">Интернет-магазин</div>
         <div class="cart">
-            <form action="#" class="search-form" @submit.prevent="filter">
-                <input type="text" class="search-field" v-model="userSearch">
+            <form action="#" class="search-form" @submit.prevent="filter">  <!-- метод фильтрации -->
+                <input type="text" class="search-field" v-model="userSearch"> <!-- Поиск-->
                 <button class="btn-search" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-            <div class="cart-block" v-show="showCart">
+            <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button> <!-- по клику меняем на showCart по умолчанию false-->
+            <div class="cart-block" v-show="showCart"> <!-- Блок корзины показывается если v-show = "showCart"  -->
                 <p v-if="!cartItems.length">Корзина пуста</p>
-                <div class="cart-item" v-for="item of cartItems" :key="item.id_product">
+                <div class="cart-item" v-for="item of cartItems" :key="item.id_product"> <!-- перибираем item of cartItems -->
                     <div class="product-bio">
                         <img :src="imgCart" alt="Some image">
                         <div class="product-desc">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="right-block">
                         <p class="product-price">{{item.quantity*item.price}}₽</p>
-                        <button class="del-btn" @click="remove(item)">&times;</button>
+                        <button class="del-btn" @click="remove(item)">&times;</button> <!-- нажимаем на кнопку метод remove(item)  -->
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="desc">
                     <h3>{{product.product_name}}</h3>
                     <p>{{product.price}}₽</p>
-                    <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                    <button class="buy-btn" @click="addProduct(product)">Купить</button> <!-- по клику передаем товар в корзину -->
                 </div>
             </div>
         </div>
